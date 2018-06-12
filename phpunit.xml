@@ -1,0 +1,7 @@
+<phpunit colors="true">
+  <testsuites>
+    <testsuite name="CroissantPoll">
+      <directory suffix='.php'>./tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
