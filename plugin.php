@@ -19,5 +19,9 @@ add_action( 'plugins_loaded', function() {
 	$container = require __DIR__ . '/container.php';
 
 	$container['post_type']->init();
-	$container['custom_fields']->register();
+
+	$acf = $container['custom_fields'];
+	$acf->register_poll_fields();
+	$acf->register_article_fields(['post', 'longform']);
+	$acf->load_filters();
 } );
