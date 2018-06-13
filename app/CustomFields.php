@@ -21,12 +21,16 @@ class CustomFields {
 						'label'      => 'Poll answer list (please do not reorder them once the poll is published)',
 						'name'       => $key . 'answers',
 						'type'       => 'repeater',
+						'required'   => 1,
+						'min'        => 2,
+						'max'        => 5,
 						'sub_fields' => [
 							[
-								'key'   => $key . 'text',
-								'label' => 'Answers for the poll (please do not reorder them once the poll is published)',
-								'name'  => $key . 'text',
-								'type'  => 'text',
+								'key'      => $key . 'text',
+								'label'    => 'Answers for the poll (please do not reorder them once the poll is published)',
+								'name'     => $key . 'text',
+								'type'     => 'text',
+								'required' => 1,
 							],
 						],
 					],
@@ -100,6 +104,8 @@ class CustomFields {
 
 	public function load_filters() {
 		add_filter( 'acf/fields/post_object/query/name=article_poll', [ $this, 'query_polls' ] );
+		add_filter( 'acf/update_value/name=poll_date_limit', [ $this, 'add_fake_date' ] );
+		add_filter( 'acf/load_value/name=poll_date_limit', [ $this, 'empty_if_fake_date' ] );
 	}
 
 	public function query_polls( $args ) {
@@ -114,6 +120,22 @@ class CustomFields {
 		];
 
 		return $args;
+	}
+
+	public function add_fake_date( $value ) {
+		if ( empty( $value ) ) {
+			$value = '2080-12-31 23:59:59';
+		}
+
+		return $value;
+	}
+
+	public function empty_if_fake_date( $value ) {
+		if ( $value === '2080-12-31 23:59:59' ) {
+			return '';
+		}
+
+		return $value;
 	}
 
 	private function set_locations( array $post_types ) {
