@@ -18,13 +18,13 @@ class CustomFields {
 				'fields'   => [
 					[
 						'key'        => $key . 'awswers',
-						'label'      => 'Poll answer list',
+						'label'      => 'Poll answer list (please do not reorder them once the poll is published)',
 						'name'       => $key . 'answers',
 						'type'       => 'repeater',
 						'sub_fields' => [
 							[
 								'key'   => $key . 'text',
-								'label' => 'Answers for the poll',
+								'label' => 'Answers for the poll (please do not reorder them once the poll is published)',
 								'name'  => $key . 'text',
 								'type'  => 'text',
 							],
@@ -64,12 +64,28 @@ class CustomFields {
 				'title'                 => 'Poll',
 				'fields'                => [
 					[
-						'key'       => $key,
-						'name'      => $key,
-						'label'     => 'Select a Poll',
-						'type'      => 'post_object',
-						'post_type' => 'poll',
+						'key'       => 'article_has_poll',
+						'name'      => 'article_has_poll',
+						'label'     => 'Post contains a poll?',
+						'type'      => 'true_false',
 						'placement' => 'left',
+					],
+					[
+						'key'               => $key,
+						'name'              => $key,
+						'label'             => 'Select a Poll',
+						'type'              => 'post_object',
+						'post_type'         => 'poll',
+						'placement'         => 'left',
+						'conditional_logic' => [
+							[
+								[
+									'field'    => 'article_has_poll',
+									'operator' => '==',
+									'value'    => '1',
+								],
+							],
+						],
 					],
 				],
 				'location'              => $locations,

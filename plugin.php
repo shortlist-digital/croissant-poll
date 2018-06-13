@@ -22,6 +22,6 @@ add_action( 'plugins_loaded', function() {
 
 	$acf = $container['custom_fields'];
 	$acf->register_poll_fields();
-	$acf->register_article_fields(['post', 'longform']);
+	$acf->register_article_fields($container['allowed_post_types']);
 	$acf->load_filters();
 } );

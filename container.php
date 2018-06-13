@@ -10,4 +10,11 @@ $container['custom_fields'] = function($c) {
 	return new CroissantPoll\CustomFields();
 };
 
+$container['allowed_post_types'] = function($c) {
+	return [
+		'post',
+		'longform'
+	];
+};
+
 return $container;
