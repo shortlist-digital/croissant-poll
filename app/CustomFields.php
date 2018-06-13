@@ -104,6 +104,7 @@ class CustomFields {
 
 	public function load_filters() {
 		add_filter( 'acf/fields/post_object/query/name=article_poll', [ $this, 'query_polls' ] );
+		add_filter( 'acf/update_value/name=article_has_poll', [ $this, 'delete_selected_poll' ], 10, 2 );
 		add_filter( 'acf/update_value/name=poll_date_limit', [ $this, 'add_fake_date' ] );
 		add_filter( 'acf/load_value/name=poll_date_limit', [ $this, 'empty_if_fake_date' ] );
 	}
@@ -120,6 +121,18 @@ class CustomFields {
 		];
 
 		return $args;
+	}
+
+	/**
+	 * If the editor uncheck the `article has poll` option
+	 * then also delete the poll connected with this article
+	 */
+	public function delete_selected_poll( $value, $post_id ) {
+		if ( ! (bool) $value ) {
+			delete_field( 'article_poll', $post_id );
+		}
+
+		return $value;
 	}
 
 	public function add_fake_date( $value ) {
