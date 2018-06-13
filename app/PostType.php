@@ -24,7 +24,8 @@ class PostType {
 
 		register_post_type(
 			'poll', [
-				'public'    => true,
+				'public'    => false,
+				'show_ui'   => true,
 				'labels'    => $labels,
 				'supports'  => [
 					'title',
