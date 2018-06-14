@@ -23,7 +23,7 @@ class CustomFields {
 						'type'       => 'repeater',
 						'required'   => 1,
 						'min'        => 2,
-						'max'        => 5,
+						'max'        => 6,
 						'sub_fields' => [
 							[
 								'key'      => $key . 'text',
