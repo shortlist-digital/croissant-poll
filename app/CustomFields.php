@@ -68,11 +68,12 @@ class CustomFields {
 				'title'                 => 'Poll',
 				'fields'                => [
 					[
-						'key'       => 'article_has_poll',
-						'name'      => 'article_has_poll',
-						'label'     => 'Post contains a poll?',
-						'type'      => 'true_false',
-						'placement' => 'left',
+						'key'          => 'article_has_poll',
+						'name'         => 'article_has_poll',
+						'label'        => 'Add a poll?',
+						'instructions' => 'All polls are created separately within "Polls", you will need to create it separately before adding it to this post',
+						'type'         => 'true_false',
+						'placement'    => 'left',
 					],
 					[
 						'key'               => $key,
