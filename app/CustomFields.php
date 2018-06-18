@@ -26,11 +26,12 @@ class CustomFields {
 						'max'        => 6,
 						'sub_fields' => [
 							[
-								'key'      => $key . 'text',
-								'label'    => 'Answers for the poll (please do not reorder them once the poll is published)',
-								'name'     => $key . 'text',
-								'type'     => 'text',
-								'required' => 1,
+								'key'       => $key . 'text',
+								'label'     => 'Answers for the poll (please do not reorder them once the poll is published)',
+								'name'      => $key . 'text',
+								'type'      => 'text',
+								'required'  => 1,
+								'maxlength' => 40,
 							],
 						],
 					],
