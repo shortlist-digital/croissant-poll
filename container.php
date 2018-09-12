@@ -13,7 +13,9 @@ $container['custom_fields'] = function($c) {
 $container['allowed_post_types'] = function($c) {
 	return [
 		'post',
-		'longform'
+		'longform',
+		'sponsored_post',
+		'sponsored_longform'
 	];
 };
 
