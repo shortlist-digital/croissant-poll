@@ -1,6 +1,6 @@
 {
-  "name": "shortlist-digital/croissant-polls",
-  "description": "Croissant polls custom post type",
+  "name": "shortlist-digital/agreable-croissant-polls",
+  "description": "Croissant polls custom post type and widget",
   "type": "wordpress-plugin",
   "require": {
     "composer/installers": "@stable",
